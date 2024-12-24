@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Nav with Dropdowns and Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+	
+	body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #ff0000;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-item {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ff0000;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-item:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    border-top: 1px solid #ffffff;
+}
+
+.dropdown li a {
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown li a:hover {
+    background-color: #cc0000;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.gallery-item {
+    background-color: #2196F3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-column {
+    width: 50%;
+}
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <a href="#" class="nav-link">Menu 1</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Submenu 1-1</a></li>
+                        <li><a href="#">Submenu 1-2</a></li>
+                        <li><a href="#">Submenu 1-3</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="nav-link">Menu 2</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Submenu 2-1</a></li>
+                        <li><a href="#">Submenu 2-2</a></li>
+                        <li><a href="#">Submenu 2-3</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="nav-link">Menu 3</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Submenu 3-1</a></li>
+                        <li><a href="#">Submenu 3-2</a></li>
+                        <li><a href="#">Submenu 3-3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="gallery">
+            <div class="gallery-item" data-category="1">Image 1</div>
+            <div class="gallery-item" data-category="2">Image 2</div>
+            <div class="gallery-item" data-category="3">Image 3</div>
+            <div class="gallery-item" data-category="1">Image 4</div>
+            <div class="gallery-item" data-category="2">Image 5</div>
+            <div class="gallery-item" data-category="3">Image 6</div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-column">
+            <p>Contact Information</p>
+        </div>
+        <div class="footer-column">
+            <p>Social Media Links</p>
+        </div>
+    </footer>
+<script>
+
+// Handle gallery item clicks with if-elif-else
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const category = item.getAttribute('data-category');
+        let message;
+
+        // 2 if-elif-else conditions
+        if (category == '1') {
+            message = "You clicked on a Category 1 item!";
+        } else if (category == '2') {
+            message = "You clicked on a Category 2 item!";
+        } else {
+            message = "You clicked on a Category 3 item!";
+        }
+
+        // Display the message
+        alert(message);
+    });
+});
+</script>
+</body>
+</html>
